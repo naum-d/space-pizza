@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Carbonara",
+    "image": "carbonara.jpg",
+    "usd": 5,
+    "euro": 6,
+    "description": "Carbonara, carbonara.jpg,  Bacon, cheddar and parmesan cheese, mozzarella, cherry tomatoes, red onion, garlic, cream sauce, Italian herbs"
+  },
+  {
+    "name": "Cheese",
+    "image": "cheese.jpg",
+    "usd": 4.5,
+    "euro": 5,
+    "description": "Large portion of mozzarella, tomato sauce"
+  },
+  {
+    "name": "Cheese Chicken",
+    "image": "cheese_chicken.jpg",
+    "usd": 5,
+    "euro": 7,
+    "description": "Chicken, cheese sauce, mozzarella, tomatoes"
+  },
+  {
+    "name": "Chicken Ranch",
+    "image": "chicken_ranch.jpg",
+    "usd": 3.5,
+    "euro": 4,
+    "description": "Chicken, ham, ranch sauce, mozzarella, tomatoes, garlic"
+  },
+  {
+    "name": "Don Bacon",
+    "image": "don_bacon.jpg",
+    "usd": 6,
+    "euro": 7,
+    "description": "Chicken, spicy pepperoni, tomato sauce, red onion, mozzarella, bacon"
+  },
+  {
+    "name": "Double Pepperoni",
+    "image": "double_pepperoni.jpg",
+    "usd": 5,
+    "euro": 5,
+    "description": "Spicy pepperoni, large portion of mozzarella, tomato sauce"
+  },
+  {
+    "name": "Four Cheeses",
+    "image": "four_cheeses.jpg",
+    "usd": 5,
+    "euro": 4,
+    "description": "Large portion of mozzarella, cheddar and parmesan cheese, blue cheese, creamy sauce"
+  },
+  {
+    "name": "Four Seasons",
+    "image": "four_seasons.jpg",
+    "usd": 4,
+    "euro": 4,
+    "description": "A larger portion of mozzarella, ham, spicy pepperoni, cheese cubes, tomatoes, mushrooms, tomato sauce, Italian herbs"
+  },
+  {
+    "name": "Hawaiian",
+    "image": "hawaiian.jpg",
+    "usd": 5.5,
+    "euro": 6.6,
+    "description": "Chicken, tomato sauce, mozzarella, pineapple"
+  },
+  {
+    "name": "Meat",
+    "image": "meat.jpg",
+    "usd": 5,
+    "euro": 7.7,
+    "description": "Chicken, ham, spicy pepperoni, tomato sauce, spicy chorizo, mozzarella"
+  },
+  {
+    "name": "Pepperoni",
+    "image": "pepperoni.jpg",
+    "usd": 4.2,
+    "euro": 3,
+    "description": "Spicy pepperoni, large portion of mozzarella, tomato sauce"
+  },
+  {
+    "name": "Super Meat",
+    "image": "super_meat.jpg",
+    "usd": 5,
+    "euro": 6,
+    "description": "Chicken, beef meatballs, spicy pepperoni, tomato sauce, spicy chorizo, mozzarella, bacon"
+  }
+]

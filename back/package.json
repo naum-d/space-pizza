@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./server.js",
     "build": "webpack",
-    "startServer": "node ./dist/bundle.js"
+    "startServer": "node ./dist/bundle.js",
+    "seed": "babel-node seedDB.js"
   },
   "author": "",
   "license": "ISC",
