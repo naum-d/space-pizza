@@ -18,7 +18,7 @@ export const appStoreReducer = (state = {}, action) => {
       const { data, mapper } = action.payload;
       return {
         ...state,
-        [storeName]: { ...store, ...data, ...(!!mapper ? { data: mapper(data.data, store.data) } : {}) },
+        [storeName]: { ...store, ...data, ...(!!mapper ? { data: mapper(store?.data) } : {}) },
       };
 
     case ACTION.APP_STORE_DELETE_STORE:

@@ -2,9 +2,9 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
+import Cart from '../Cart/Cart';
 import Currency from '../Currency/Currency';
 
 const useStyles = makeStyles(theme => ({
@@ -30,9 +30,8 @@ const Header = () => {
       <Toolbar>
         <Typography variant="h5" className={classes.title} children="Super Pizza" />
 
-        <ButtonGroup>
-          <Currency />
-        </ButtonGroup>
+        <Currency />
+        <Cart />
       </Toolbar>
     </AppBar>
   );
