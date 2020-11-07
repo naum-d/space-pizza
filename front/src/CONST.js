@@ -2,6 +2,7 @@ export const STORE = {
   USER: 'user-store',
   CART: 'cart-store',
   PIZZAS: 'pizzas-store',
+  CURRENCY: 'currency-store',
 };
 
 export const LOCAL_STORE = {

@@ -2,12 +2,11 @@ import React from 'react';
 import * as PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import Progress from '../Layouts/Progress';
+import PizzaCardFooter from './PizzaCardFooter';
 import { getImageFromBase64 } from '../../helpers';
 import GridContainer from '../Layouts/GridContainer';
 
@@ -25,13 +24,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const PizzaCard = props => {
-  const { isLoading, img, name, description } = props;
+  const { isLoading, img, name, description, ...other } = props;
 
   const classes = useStyles();
-
-  const renderButtons = () => {
-    return <Button children="Add" />;
-  };
 
   const renderCard = () => {
     return (
@@ -43,10 +38,7 @@ const PizzaCard = props => {
         </GridContainer>
 
         <GridContainer itemProps={{ className: classes.grid }} alignItems="center" justify="space-between">
-          <Grid item children={<Typography variant="h6" children="6.66 USD" />} />
-          <Grid item>
-            <ButtonGroup variant="outlined" color="primary" children={renderButtons()} />
-          </Grid>
+          <PizzaCardFooter {...other} />
         </GridContainer>
       </Grid>
     );
