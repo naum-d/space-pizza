@@ -19,7 +19,7 @@ const Pizzas = () => {
   }, [dispatch, storeName, dataSource]);
 
   useEffect(() => {
-    setTimeout(() => !!pizzasStore && !pizzasStore.isLoading && setData(pizzasStore.data), 2000);
+    setTimeout(() => !!pizzasStore && !pizzasStore.isLoading && setData(pizzasStore.data), 1000);
   }, [pizzasStore]);
 
   return (
