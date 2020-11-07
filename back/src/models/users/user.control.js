@@ -1,16 +1,20 @@
 import User from './user.model';
-import { getUniqueKey } from '../../helpers';
 
-export const signUpUser = async (req, res, next) => {
-  const { body: { email, ...body } } = req;
+export const createUser = async (user, res) => {
+  const { email } = user;
   const oldUser = await User.findOne({ email });
 
   if (!!oldUser) return res.status(403).send({ email: 'Already Exist' });
 
+  const newUser = await User.create(user);
+  return User.findById(newUser._id).select('-password');
+};
+
+export const signUpUser = async (req, res, next) => {
+  const { body } = req;
   try {
-    const newUser = await User.create({ email, ...body });
-    const user = await User.findById(newUser._id).select('-password');
-    return res.status(201).send({ ...user.toJSON(), token: getUniqueKey().toString() });
+    const user = await createUser(body, res);
+    return res.status(201).send({ ...user.toJSON(), token: user.generateAuthToken() });
   } catch (e) {
     next(e);
   }
@@ -24,7 +28,7 @@ export const signInUser = async (req, res, next) => {
   if (password !== oldUser.password) return res.status(403).send({ password: 'Invalid Password' });
 
   const user = await User.findById(oldUser._id).select('-password');
-  return res.status(201).send({ ...user.toJSON(), token: getUniqueKey().toString() });
+  return res.status(201).send({ ...user.toJSON(), token: user.generateAuthToken() });
 };
 
 export const deleteUser = async (req, res, next) => {
