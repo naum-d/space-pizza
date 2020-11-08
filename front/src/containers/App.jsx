@@ -7,11 +7,11 @@ import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import * as CONST from '../CONST';
+import PizzasPage from './PizzasPage';
 import Main from '../components/Layouts/Main';
 import Header from '../components/Layouts/Header';
 import Router from '../components/Layouts/Router';
 import { appStoreLoadData } from '../store/appStore/actions';
-import PizzasPage from './PizzasPage';
 
 const theme = createMuiTheme({
   palette: {
@@ -26,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     const token = localStorage.getItem(CONST.LOCAL_STORE.TOKEN);
-    !!token && dispatch(appStoreLoadData({ storeName: CONST.STORE.USER, dataSource: CONST.URL.USERS }));
+    !!token && dispatch(appStoreLoadData({ storeName: CONST.STORE.USER, dataSource: `${CONST.URL.USERS}/self` }));
   }, [dispatch]);
 
   return (

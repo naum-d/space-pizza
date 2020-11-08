@@ -23,8 +23,8 @@ export const appStoreReducer = (state = {}, action) => {
 
     case ACTION.APP_STORE_DELETE_STORE:
       if (!!storeName) {
-        delete state[storeName];
-        return state;
+        const { [storeName]: obj, ...other } = state;
+        return other;
       }
       return {};
 

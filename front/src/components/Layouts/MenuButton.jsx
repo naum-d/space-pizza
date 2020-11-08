@@ -5,7 +5,7 @@ import Menu from '@material-ui/core/Menu';
 import Button from '@material-ui/core/Button';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import { turnOffEvent } from '../../helpers';
+import { turnOffEvent } from '../../helpers/helpers';
 
 const MenuButton = props => {
   const { label, menuList, ...other } = props;
