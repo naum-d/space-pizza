@@ -18,7 +18,6 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1),
   },
   grid: {
-    width: '100%',
     paddingTop: theme.spacing(1),
   },
 }));
@@ -31,13 +30,13 @@ const PizzaCard = props => {
   const renderCard = () => {
     return (
       <Grid container direction="column" justify="space-between" style={{ height: '100%' }}>
-        <GridContainer itemProps={{ className: classes.grid }}>
+        <GridContainer>
           <Grid item xs={12} children={getImageFromBase64(img, { width: '100%' })} />
           <Grid item xs={12} children={<Typography variant="h6" children={name} />} />
           <Grid item xs={12} children={<Typography variant="body2" children={description} />} />
         </GridContainer>
 
-        <GridContainer itemProps={{ className: classes.grid }} alignItems="center" justify="space-between">
+        <GridContainer justify="space-between" className={classes.grid}>
           <PizzaCardFooter {...other} />
         </GridContainer>
       </Grid>
