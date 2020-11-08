@@ -13,7 +13,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import * as CONST from '../../CONST';
 import GridContainer from '../Layouts/GridContainer';
-import { getImageFromBase64, turnOffEvent } from '../../helpers';
+import { getImageFromBase64, turnOffEvent } from '../../helpers/helpers';
 import { appStoreUpdateStore } from '../../store/appStore/actions';
 
 const useStyles = makeStyles(theme => ({

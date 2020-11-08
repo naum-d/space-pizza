@@ -9,7 +9,7 @@ import { appStoreCreateStore, appStoreLoadData } from '../../store/appStore/acti
 
 import * as CONST from '../../CONST';
 import CartMenuItem from './CartMenuItem';
-import { turnOffEvent } from '../../helpers';
+import { turnOffEvent } from '../../helpers/helpers';
 
 const useStyles = makeStyles(theme => ({
   menuItem: {
@@ -30,6 +30,7 @@ const Cart = props => {
   const [cart, setCart] = useState({});
   const [pizzas, setPizzas] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [currency, setCurrency] = useState('usd');
   const [totalCount, setTotalCount] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const cartStore = useSelector(state => state.appStore[CONST.STORE.CART]);
@@ -53,22 +54,26 @@ const Cart = props => {
   useEffect(() => {
     if (!!cartStore?.data) {
       const timer = new Date().getTime() + 24 * 60 * 60 * 1000;
-      const order = cartStore.data;
+      const order = cartStore?.data;
       localStorage.setItem(CONST.LOCAL_STORE.CART, JSON.stringify({ timer, order }));
     }
   }, [cartStore]);
 
   useEffect(() => {
-    !!cartStore?.data && setCart(cartStore.data);
-    !!cartStore?.data && setTotalCount(Object.values(cartStore.data).reduce((total, i) => total + i['count'], 0));
+    setCart(cartStore?.data || {});
+    setTotalCount(Object.values(cartStore?.data || {}).reduce((total, i) => total + i['count'], 0));
   }, [cartStore]);
+
+  useEffect(() => {
+    setCurrency(currencyStore?.data || 'usd');
+  }, [currencyStore]);
 
   useEffect(() => {
     const orderIds = Object.keys(cart);
     setTotalPrice(pizzas.reduce((price, i) => orderIds.includes(i.id)
-      ? price + i[currencyStore.data] * cart[i.id]?.['count']
+      ? price + i[currency] * cart[i.id]?.['count']
       : price, 0));
-  }, [cart, pizzas, currencyStore]);
+  }, [cart, pizzas, currency]);
 
   const handleClick = e => {
     turnOffEvent(e);
@@ -110,7 +115,7 @@ const Cart = props => {
           {renderMenuItems()}
           <MenuItem>
             <Button fullWidth variant="contained" color="primary">
-              Make Order: {totalPrice} {currencyStore.data.toString()}
+              Make Order: {totalPrice} {currency.toString()}
             </Button>
           </MenuItem>
         </Menu>

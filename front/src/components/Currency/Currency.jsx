@@ -18,8 +18,8 @@ const Currency = props => {
   }, [dispatch, storeName]);
 
   useEffect(() => {
-    !!currencyStore?.data && setLabel(currencyStore.data);
-    !!currencyStore?.data && localStorage.setItem(CONS.LOCAL_STORE.CURRENCY, currencyStore.data);
+    setLabel(currencyStore?.data || 'usd');
+    localStorage.setItem(CONS.LOCAL_STORE.CURRENCY, currencyStore?.data || 'usd');
   }, [currencyStore]);
 
   const handleChange = val => {

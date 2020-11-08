@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Progress from '../Layouts/Progress';
 import PizzaCardFooter from './PizzaCardFooter';
-import { getImageFromBase64 } from '../../helpers';
+import { getImageFromBase64 } from '../../helpers/helpers';
 import GridContainer from '../Layouts/GridContainer';
 
 const useStyles = makeStyles(theme => ({

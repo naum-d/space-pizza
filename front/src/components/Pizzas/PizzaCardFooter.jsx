@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import * as CONST from '../../CONST';
-import { turnOffEvent } from '../../helpers';
+import { turnOffEvent } from '../../helpers/helpers';
 import { appStoreUpdateStore } from '../../store/appStore/actions';
 
 const PizzaCardFooter = props => {
@@ -22,17 +22,17 @@ const PizzaCardFooter = props => {
   const currencyStore = useSelector(state => state.appStore[CONST.STORE.CURRENCY]);
 
   useEffect(() => {
-    !!currencyStore?.data && setCurrency(currencyStore.data);
+    setCurrency(currencyStore?.data || 'usd');
   }, [currencyStore]);
 
   useEffect(() => {
-    !!cartStore?.data && setCount(cartStore?.data?.[id]?.count || 0);
-    !!cartStore?.data && setIsAdded(!!Object.keys(cartStore.data).includes(id));
+    setCount(cartStore?.data?.[id]?.count || 0);
+    setIsAdded(!!Object.keys(cartStore?.data || {}).includes(id));
   }, [cartStore, id]);
 
   const handleAdd = e => {
     turnOffEvent(e);
-    const mapper = d => ({ ...d, [id]: { pizza: id, count: 1 } });
+    const mapper = d => ({ ...(d || {}), [id]: { pizza: id, count: 1 } });
     dispatch(appStoreUpdateStore({ storeName: CONST.STORE.CART, mapper }));
   };
 
