@@ -14,15 +14,15 @@ const getPrice = async ({ order, currency }) => {
 };
 
 export const addNewOrder = async (req, res, next) => {
-  const { body: { user, order } } = req;
+  const { body: { user, ...order } } = req;
   let userId = req.user?._id;
 
   try {
     if (!!user) {
       const newUser = await createUser(user, res);
-      userId = newUser._id
+      userId = newUser._id;
     }
-    else {
+    else if (!userId) {
       return res.status(404).send({ message: 'Need User' });
     }
 

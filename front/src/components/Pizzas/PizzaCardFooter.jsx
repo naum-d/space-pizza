@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import * as CONST from '../../CONST';
-import { turnOffEvent } from '../../helpers/helpers';
+import { makeDecrement, makeIncrement, turnOffEvent } from '../../helpers/helpers';
 import { appStoreUpdateStore } from '../../store/appStore/actions';
 
 const PizzaCardFooter = props => {
@@ -38,17 +38,12 @@ const PizzaCardFooter = props => {
 
   const handlePlus = e => {
     turnOffEvent(e);
-    const mapper = d => ({ ...d, [id]: { pizza: id, count: count + 1 } });
-    dispatch(appStoreUpdateStore({ storeName: CONST.STORE.CART, mapper }));
+    dispatch(appStoreUpdateStore({ storeName: CONST.STORE.CART, mapper: d => makeIncrement(d, id) }));
   };
 
   const handleMinus = e => {
     turnOffEvent(e);
-    const mapper = d => {
-      const { [id]: obj, ...other } = d;
-      return count === 1 ? { ...other } : { ...other, [id]: { ...obj, count: count - 1 } };
-    };
-    dispatch(appStoreUpdateStore({ storeName: CONST.STORE.CART, mapper }));
+    dispatch(appStoreUpdateStore({ storeName: CONST.STORE.CART, mapper: d => makeDecrement(d, id) }));
   };
 
   return (

@@ -10,6 +10,7 @@ import { appStoreCreateStore, appStoreLoadData } from '../../store/appStore/acti
 import * as CONST from '../../CONST';
 import CartMenuItem from './CartMenuItem';
 import { turnOffEvent } from '../../helpers/helpers';
+import { useLocation } from '../../helpers/routerHooks';
 
 const useStyles = makeStyles(theme => ({
   menuItem: {
@@ -27,6 +28,7 @@ const useStyles = makeStyles(theme => ({
 const Cart = props => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { navigate } = useLocation();
   const [cart, setCart] = useState({});
   const [pizzas, setPizzas] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -84,6 +86,12 @@ const Cart = props => {
     setAnchorEl(null);
   };
 
+  const handleOrder = e => {
+    turnOffEvent(e);
+    setAnchorEl(null);
+    navigate('/order');
+  };
+
   const renderMenuItems = () => {
     const orderIds = Object.keys(cart);
     return pizzas.map(({ id, ...other }) => {
@@ -114,8 +122,8 @@ const Cart = props => {
           transformOrigin={{ vertical: 'top', horizontal: 'right' }}>
           {renderMenuItems()}
           <MenuItem>
-            <Button fullWidth variant="contained" color="primary">
-              Make Order: {totalPrice} {currency.toString()}
+            <Button fullWidth variant="contained" color="primary" onClick={handleOrder}>
+              Make Order: {totalPrice.toFixed(2)} {currency.toString()}
             </Button>
           </MenuItem>
         </Menu>

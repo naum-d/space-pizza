@@ -13,6 +13,7 @@ import AuthDialog from '../Users/AuthDialog';
 import { turnOffEvent } from '../../helpers/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import { appStoreDeleteStore } from '../../store/appStore/actions';
+import { useLocation } from '../../helpers/routerHooks';
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -26,18 +27,27 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1,
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
 }));
 
 const Header = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { navigate } = useLocation();
   const [isLogin, setIsLogin] = useState(false);
   const userStore = useSelector(state => state.appStore[CONST.STORE.USER]);
 
   useEffect(() => {
     setIsLogin(!!userStore?.data?.token);
   }, [userStore]);
+
+  const handleClick = e => {
+    turnOffEvent(e);
+    navigate('/');
+  };
 
   const handleLogout = e => {
     turnOffEvent(e);
@@ -50,7 +60,7 @@ const Header = () => {
   return (
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar>
-        <Typography variant="h5" className={classes.title} children="Super Pizza" />
+        <Typography variant="h5" className={classes.title} children="Super Pizza" onClick={handleClick} />
 
         <ButtonGroup variant="outlined" color="inherit">
           <Currency />

@@ -14,4 +14,5 @@ export const LOCAL_STORE = {
 export const URL = {
   USERS: '/api/users',
   PIZZAS: '/api/pizzas',
+  ORDERS: '/api/orders',
 };
