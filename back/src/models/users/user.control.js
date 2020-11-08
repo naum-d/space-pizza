@@ -4,7 +4,10 @@ export const createUser = async (user, res) => {
   const { email } = user;
   const oldUser = await User.findOne({ email });
 
-  if (!!oldUser) return res.status(403).send({ email: 'Already Exist' });
+  if (!!oldUser) {
+    res.status(403).send({ email: 'Already Exist' });
+    return;
+  }
 
   const newUser = await User.create(user);
   return User.findById(newUser._id).select('-password');
@@ -14,7 +17,7 @@ export const signUpUser = async (req, res, next) => {
   const { body } = req;
   try {
     const user = await createUser(body, res);
-    return res.status(201).send({ ...user.toJSON(), token: user.generateAuthToken() });
+    return !!user && res.status(201).send({ ...user.toJSON(), token: user.generateAuthToken() });
   } catch (e) {
     next(e);
   }

@@ -28,9 +28,7 @@ const AppAPI = () => {
         .then(resp => {
           !!resp.data.errors ? reject(resp.data.errors) : resolve(resp.data);
         })
-        .catch(error => {
-          reject(error);
-        });
+        .catch(error => reject(error?.response?.data));
     });
   };
 
