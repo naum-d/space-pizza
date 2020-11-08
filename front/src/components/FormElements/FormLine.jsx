@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 import GridContainer from '../Layouts/GridContainer';
 
 const FormLine = props => {
-  const { title, children } = props;
+  const { children } = props;
 
   const renderChildren = () => {
     if (Array.isArray(children)) {
