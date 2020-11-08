@@ -37,7 +37,7 @@ export const addNewOrder = async (req, res, next) => {
 export const getUserOrders = async (req, res, next) => {
   const { user: { _id } } = req;
   try {
-    const orders = await Order.find({ user: _id }).select('-user').populate('order.pizza');
+    const orders = await Order.find({ user: _id }).sort('-_id').select('-user').populate('order.pizza');
     return res.send(orders);
   } catch (e) {
     return next(e);
