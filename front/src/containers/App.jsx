@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import 'fontsource-roboto';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,6 +12,8 @@ import Main from '../components/Layouts/Main';
 import Header from '../components/Layouts/Header';
 import Router from '../components/Layouts/Router';
 import { appStoreLoadData } from '../store/appStore/actions';
+import OrdersPage from './OrdersPage';
+import Typography from '@material-ui/core/Typography';
 
 const theme = createMuiTheme({
   palette: {
@@ -37,7 +39,11 @@ const App = () => {
 
         <Main>
           <Switch>
-            <Router path="/" component={PizzasPage} />
+            <Router exact path="/" component={PizzasPage} />
+
+            <Router path="/order" component={OrdersPage} />
+
+            <Route render={() => <Typography variant="h4" children="404. Page not found" />} />
           </Switch>
         </Main>
       </ThemeProvider>

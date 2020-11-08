@@ -6,7 +6,7 @@ import * as PropTypes from 'prop-types';
 import * as CONST from '../../CONST';
 
 const Router = props => {
-  const { isPrivate, path, component } = props;
+  const { isPrivate, path, component, ...other } = props;
 
   const [isLogin, setIsLogin] = useState(false);
   const userStore = useSelector(state => state.appStore[CONST.STORE.USER]);
@@ -18,8 +18,8 @@ const Router = props => {
   return (
     <Fragment>
       {isPrivate
-        ? isLogin && <Route {...{ path, component }} />
-        : <Route {...{ path, component }} />
+        ? isLogin && <Route {...{ path, component, ...other }} />
+        : <Route {...{ path, component, ...other }} />
       }
     </Fragment>
   );
