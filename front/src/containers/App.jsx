@@ -14,6 +14,7 @@ import Router from '../components/Layouts/Router';
 import { appStoreLoadData } from '../store/appStore/actions';
 import OrdersPage from './OrdersPage';
 import Typography from '@material-ui/core/Typography';
+import HistoriesPage from './HistoriesPage';
 
 const theme = createMuiTheme({
   palette: {
@@ -39,9 +40,11 @@ const App = () => {
 
         <Main>
           <Switch>
-            <Router exact path="/" component={PizzasPage} />
+            <Router path="/" exact component={PizzasPage} />
 
             <Router path="/order" component={OrdersPage} />
+
+            <Router path="/history" isPrivate component={HistoriesPage} />
 
             <Route render={() => <Typography variant="h4" children="404. Page not found" />} />
           </Switch>

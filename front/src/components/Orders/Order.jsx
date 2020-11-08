@@ -63,8 +63,8 @@ const Order = () => {
   const handleOrder = () => {
     const data = { order: Object.values(cart), currency };
     dispatch(appStoreMakeRequest({ storeName: 'order-form', dataSource: CONST.URL.ORDERS, data, method: 'POST' }))
+      .then(() => localStorage.setItem(CONST.LOCAL_STORE.CART, JSON.stringify({})))
       .then(() => dispatch(appStoreDeleteStore(CONST.STORE.CART)))
-      .then(() => localStorage.clear());
   };
 
   const renderItems = () => {
