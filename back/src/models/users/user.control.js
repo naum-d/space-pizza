@@ -42,3 +42,8 @@ export const deleteUser = async (req, res, next) => {
     next(e);
   }
 };
+
+export const getSelfUser = async (req, res, next) => {
+  const { user } = req;
+  res.send({ ...user.toJSON(), token: user.generateAuthToken() });
+};
