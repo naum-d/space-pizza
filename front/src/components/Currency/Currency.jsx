@@ -5,7 +5,7 @@ import * as CONS from '../../CONST';
 import MenuButton from '../Layouts/MenuButton';
 import { appStoreCreateStore, appStoreUpdateStore } from '../../store/appStore/actions';
 
-const Currency = () => {
+const Currency = props => {
   const storeName = CONS.STORE.CURRENCY;
 
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const Currency = () => {
     { name: 'euro', label: 'EURO', action: handleChange },
   ];
 
-  return <MenuButton {...{ label, menuList }} />;
+  return <MenuButton {...{ ...props, label, menuList }} />;
 };
 
 Currency.propTypes = {};
