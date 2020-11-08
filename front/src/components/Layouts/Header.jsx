@@ -54,9 +54,9 @@ const Header = () => {
 
         <ButtonGroup variant="outlined" color="inherit">
           <Currency />
-          <Cart />
           {!isLogin && <AuthDialog />}
           {isLogin && <Button onClick={handleLogout} children={'Logout'} />}
+          <Cart />
         </ButtonGroup>
       </Toolbar>
     </AppBar>

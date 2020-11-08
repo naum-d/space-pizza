@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import SignInForm from './SignInForm';
 import AppTabs from '../Layouts/AppTabs';
 import { turnOffEvent } from '../../helpers/helpers';
+import SignUpForm from './SignUpForm';
 
 const AuthDialog = props => {
   const [tab, setTab] = useState(0);
@@ -25,7 +26,7 @@ const AuthDialog = props => {
           <AppTabs {...{ tab }} handleChange={setTab} tabsList={['Sign In', 'Sign Up']} />
 
           {tab === 0 && <SignInForm handleClose={setOpen} />}
-          {tab === 1 && 'Sign Up'}
+          {tab === 1 && <SignUpForm handleClose={setOpen} />}
 
         </DialogContent>
       </Dialog>

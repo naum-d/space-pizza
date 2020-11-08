@@ -59,7 +59,7 @@ const FormikContainer = props => {
       .then(resp => {
         !!afterSubmit ? afterSubmit(resp, actions, navigate) : method === 'PUT' ? goBack() : navigate(redirectPath);
       })
-      .catch(error => actions.setErrors(error?.errors || {}))
+      .catch(error => actions.setErrors(error || {}))
       .finally(() => actions.setSubmitting(false));
   };
 
@@ -74,7 +74,7 @@ const FormikContainer = props => {
           handleSubmit();
         }}
       >
-        <Grid container spacing={2} component="div">
+        <Grid container spacing={2}>
           {isLoading && <Progress />}
           {renderFormFields({ ...props, ...other, formFields })}
           <FormikSubmitButton {...{ ...other, ...props }} formData={formFields} />

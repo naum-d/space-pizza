@@ -6,8 +6,8 @@ import { Button } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
-import { turnOffEvent } from '../../helpers/helpers';
 import GridContainer from '../Layouts/GridContainer';
+import { turnOffEvent } from '../../helpers/helpers';
 
 const AppInput = props => {
   const { value, size, type, actions, onChange, ...other } = props;
@@ -27,7 +27,7 @@ const AppInput = props => {
 
   const handleChange = e => {
     const { value } = turnOffEvent(e, e.target);
-    !!isMultiple && setInput(value);
+    setInput(value);
     !isMultiple && onChange(type === 'number' ? +value : value);
   };
 
